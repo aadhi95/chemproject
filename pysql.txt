@@ -1,0 +1,84 @@
+1)
+set serveroutput on;
+declare
+r numeric(32,10):='&r';
+pi numeric(32,10):=3.414;
+area numeric(32,10);
+volume numeric(32,10);
+begin
+dbms_output.put_line('area of sphere = ');
+area:=4*pi*r*r;
+dbms_output.put_line(area);
+volume:=4*pi*r*r*r/3;
+dbms_output.put_line('volume of sphere = ');
+dbms_output.put_line(volume);
+end;
+
+ip:
+r=12
+output:
+area of sphere = 
+1966.464
+volume of sphere =
+7865.856
+
+2)
+
+DECLARE 
+a number:='&a';
+ b number:='&b'; 
+c number; 
+--Function definition
+FUNCTION mul(x IN number, y IN number) RETURN number IS
+ z number; 
+BEGIN 
+z:=x*y; 
+RETURN z; 
+END; 
+--program
+BEGIN 
+ c := mul(a, b); dbms_output.put_line(' product : ' || c);
+ END;
+
+
+3)
+
+
+
+set serveroutput on;
+declare 
+ab number:='&ab';
+b number:='&b';
+ac number:='&ac';
+
+PROCEDURE findMin(x IN number, y IN number, z in number ) aS 
+BEGIN 
+IF (x < y) and (x < z) THEN 
+ dbms_output.put_line('min '|| x);
+ if (y>z) then
+ dbms_output.put_line('max '|| y);
+ else
+ dbms_output.put_line('max '|| z);
+ end if;
+ELsif (y < x) and (y < z) THEN
+  dbms_output.put_line('min '|| y);
+  if(x>z) then
+  dbms_output.put_line('max '|| x);
+  else
+  dbms_output.put_line('max '|| z);
+  end if;
+else
+  dbms_output.put_line('min '|| z);
+  if(y>x) then
+  dbms_output.put_line('max '|| y);
+  else
+  dbms_output.put_line('max '|| x);
+  end if;
+END IF; 
+END; 
+--Program
+BEGIN 
+findMin(ab, b, ac);
+END;
+
+
